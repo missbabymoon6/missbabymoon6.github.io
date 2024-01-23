@@ -36,7 +36,7 @@ code_word_wrap: false
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/missbabymoon6 || Github || '#24292e'
-  fas fa-envelope: mailto:missbabymoon6@gmail.com || Email || '#4a7dbe'
+  fas fa-envelope: mailto:missbabymoon6@gmail.com || Email || '#24292e'
 
 # Image (圖片設置)
 # --------------------------------------
