@@ -12,14 +12,14 @@ menu:
   主页: / || fas fa-home
   文章: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
-  目录: /categories/ || fas fa-folder-open
-  列表||fas fa-list:
-    音乐: /music/ || fas fa-music
-    影视: /movies/ || fas fa-video
-    照片: /gallery/ || fas fa-images
-    书籍: /book/ || fas fa-book
+  分类: /categories/ || fas fa-folder-open
+  #列表||fas fa-list:
+    #音乐: /music/ || fas fa-music
+    #影视: /movies/ || fas fa-video
+    #照片: /gallery/ || fas fa-images
+    #书籍: /book/ || fas fa-book
   链接: /link/ || fas fa-link
-  关于: /about/ || fas fa-heart
+  #关于: /about/ || fas fa-heart
 
 # Code Blocks (代碼相關)
 # --------------------------------------
