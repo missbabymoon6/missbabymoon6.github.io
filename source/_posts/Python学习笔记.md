@@ -9,10 +9,12 @@ description:
 ---
 
 # 目录
+
 1.[strip()、lstrip()、rstrip()函数](#striplstriprstrip函数)  
 2.[异常处理](#异常处理)
 3.[split()函数](#split函数)
 4.[isdigit和isalpha函数](#isdigit和isalpha函数)
+___
 
 ## strip()、lstrip()、rstrip()函数
 
@@ -64,7 +66,9 @@ finally:
     # 无论是否引发了异常，都会执行这里的清理代码
     print("清理工作完成")
 ```
+
 ## split()函数
+
 在Python中，split()是一个字符串对象的方法，它用于将一个字符串按照指定的分隔符拆分成多个子串，并将这些子串组成一个列表返回。split()方法的基本语法如下：
 
 ```python
@@ -92,6 +96,7 @@ print(result)  # ['apple', 'orange', 'banana,grape']
 split()方法非常实用，可以方便地将字符串按照指定的规则分割成多个部分，使用起来十分灵活。
 
 ## isdigit()和isalpha()函数
+
 在Python中，可以使用isdigit()方法来判断一个字符是否是数字，使用isalpha()方法来判断一个字符是否是字母。这两个方法分别返回布尔值True或False。
 例如：
 ```python
@@ -103,4 +108,3 @@ elif char.isalpha():
 else:
     print("字符不是数字也不是字母")
 ```
-
