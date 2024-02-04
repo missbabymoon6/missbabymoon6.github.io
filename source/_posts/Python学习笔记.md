@@ -22,7 +22,7 @@ print(stripped_s)  # 输出：Hello, World!
 s = "###Hello, World!###"
 stripped_s = s.strip("#")
 print(stripped_s)  # 输出：Hello, World!
- 复制
+
 s = "  Hello, World!  "
 stripped_s = s.strip()
 print(stripped_s)  # 输出：Hello, World!
@@ -30,5 +30,6 @@ print(stripped_s)  # 输出：Hello, World!
 s = "###Hello, World!###"
 stripped_s = s.strip("#")
 print(stripped_s)  # 输出：Hello, World!
-​```
+
+
 在上面的例子中，第一个strip()函数去除了字符串s头尾的空格，而第二个strip()函数去除了字符串s头尾的#字符。
