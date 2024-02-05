@@ -187,4 +187,32 @@ print(values)  # 输出: dict_values(['value1', 'value2'])
 items = my_dict.items()
 print(items)  # 输出: dict_items([('key1', 'value1'), ('key2', 'value2')])
 ```
+## append和pop和del
 
+append() 方法用于在列表末尾追加新的元素。
+```python
+#在列表末尾追加一个新元素
+my_list.append(4)
+print(my_list)  #输出: [1, 2, 3, 4]
+```
+pop() 方法用于移除列表中的一个元素（默认是最后一个），并返回该元素的值。它还可以接受一个索引作为参数，来移除指定位置的元素。
+```python
+my_list = [1, 2, 3, 4, 5]
+#移除并返回最后一个元素
+popped_element = my_list.pop()
+print(popped_element)  #输出: 5
+print(my_list)  #输出: [1, 2, 3, 4]
+#使用索引来移除指定位置的元素
+popped_element = my_list.pop(1)  #移除索引为1的元素（即第二个元素）
+print(popped_element)  #输出: 2
+print(my_list)  #输出: [1, 3, 4]
+```
+del 关键字用于从字典中删除指定键及其对应的值，删除操作不返回任何值。
+```python
+my_dict = {"a": 1, "b": 2, "c": 3}
+
+#使用del关键字删除键为"a"的元素
+del my_dict["a"]
+print(my_dict)  # 输出: {'b': 2, 'c': 3}
+```
+1
