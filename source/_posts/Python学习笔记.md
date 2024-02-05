@@ -215,3 +215,18 @@ my_dict = {"a": 1, "b": 2, "c": 3}
 del my_dict["a"]
 print(my_dict)  # 输出: {'b': 2, 'c': 3}
 ```
+## if-else
+
+在Python中，常见的条件语句包括if语句、elif语句（else if的简写）和else语句。
+
+三元运算符实现if-else的简便写法：
+```python
+value_if_true if condition else value_if_false
+```
+在Python中，可以使用连续比较来对多个条件进行组合。例如，要检查变量x是否大于10且小于20，可以这样写：
+```python
+x = 15
+if 10 < x < 20:
+    print("x is between 10 and 20")
+```
+
