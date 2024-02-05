@@ -100,4 +100,91 @@ elif char.isalpha():
 else:
     print("字符不是数字也不是字母")
 ```
-##
+## int函数
+
+在Python中，int()函数用于将一个字符串或数字转换为十进制整数。
+
+当int()函数接收一个字符串作为参数时，它会尝试将这个字符串转换为整数。例如：
+```python
+num_str = "123"
+num_int = int(num_str)
+print(num_int)  # 输出: 123
+```
+可以使用可选的第二个参数指定字符串的进制。例如：
+```python
+hex_str = "1A"
+decimal_val = int(hex_str, 16)
+print(decimal_val)  # 输出: 26
+```
+当int()函数接收一个浮点数作为参数时，它会将这个浮点数截断为整数。例如：
+```python
+num_float = 3.14
+num_int = int(num_float)
+print(num_int)  # 输出: 3
+```
+## 字典与map
+
+在Python中，Map可以用字典（dictionary）来表示，使用键值对来存储和操作整个映射关系。字典是一种无序的数据结构，它存储的是键值对（key-value pairs）。Map中的键是唯一的，且通常用来进行快速的查找操作。
+在Python中，字典是一种无序、可变且可迭代的数据类型。字典的主要特点是使用键值对存储数据。下面详细介绍字典的用法：
+
+创建字典：
+字典可以使用花括号 {} 或内置的 dict() 函数创建。键值对之间使用冒号 : 分隔，每对键值对之间使用逗号 , 分隔。
+```python
+#创建一个空字典
+my_dict = {}
+
+#创建一个带有初始键值对的字典
+my_dict = {"key1": "value1", "key2": "value2"}
+
+#使用dict()函数创建字典
+my_dict = dict(key1="value1", key2="value2")
+```
+
+访问和修改字典中的元素：
+字典的每个元素都有一个键和对应的值，可以使用键来访问和修改字典中的元素。
+```python
+my_dict = {"key1": "value1", "key2": "value2"}
+
+#访问字典中的元素
+value1 = my_dict["key1"]
+print(value1)  # 输出: value1
+
+#修改字典中的元素
+my_dict["key2"] = "new value"
+print(my_dict)  # 输出: {'key1': 'value1', 'key2': 'new value'}
+```
+
+添加和删除字典中的元素：
+可以使用赋值语句添加新的键值对，或使用del关键字删除指定的键值对。
+```python
+my_dict = {"key1": "value1"}
+
+#添加新的键值对
+my_dict["key2"] = "value2"
+print(my_dict)  # 输出: {'key1': 'value1', 'key2': 'value2'}
+
+#删除指定的键值对
+del my_dict["key1"]
+print(my_dict)  # 输出: {'key2': 'value2'}
+```
+字典的常用操作：
+
+获取所有键：使用keys()方法获得字典中所有的键。
+获取所有值：使用values()方法获得字典中所有的值。
+获取所有键值对：使用items()方法获取字典中所有的键值对，返回一个可迭代的元组。
+```python
+my_dict = {"key1": "value1", "key2": "value2"}
+
+#获取所有键
+keys = my_dict.keys()
+print(keys)  # 输出: dict_keys(['key1', 'key2'])
+
+#获取所有值
+values = my_dict.values()
+print(values)  # 输出: dict_values(['value1', 'value2'])
+
+#获取所有键值对
+items = my_dict.items()
+print(items)  # 输出: dict_items([('key1', 'value1'), ('key2', 'value2')])
+```
+
