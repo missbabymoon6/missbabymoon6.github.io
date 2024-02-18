@@ -13,8 +13,12 @@
       link: https://www.codewars.com/collections/python-basic-to-intermediate
       #avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: practice makes perfect
-    - name: Codewars
-      link: https://www.codewars.com/collections/python-basic-to-intermediate
+
+- class_name: 学习网站
+  #class_desc: 值得推荐的博客
+  link_list:
+    - name: Freecodecamp
+      link: https://www.freecodecamp.org/
       #avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: practice makes perfect
 
