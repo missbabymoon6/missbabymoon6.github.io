@@ -22,6 +22,12 @@
       #avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: practice makes perfect
 
-
+- class_name: 心理学教程
+  #class_desc: 值得推荐的博客
+  link_list:
+    - name: 学习路线
+      link: https://www.bilibili.com/video/BV1YY4y1b7U9/?spm_id_from=333.880.my_history.page.click&vd_source=09c0a4bf92cd9a094dc0d5d7b1ac3a3d
+      #avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 心理学学习路线
       
 
