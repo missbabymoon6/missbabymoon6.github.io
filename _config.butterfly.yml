@@ -235,7 +235,7 @@ aside:
       link: https://github.com/missbabymoon6
   card_announcement:
     enable: true
-    content: Welcome to my Secret base!
+    content: Today is the first day of your rest life.
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
