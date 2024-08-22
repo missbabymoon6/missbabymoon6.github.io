@@ -130,3 +130,19 @@ go run hello.go
 go build hello.go
 ./hello
 ```
+---
+# GO02课后作业
+## 编写程序确定飞船Malacandra要在28天内到达火星，飞船的行进速度。假设地面与火星的距离为56,000,000公里
+```go
+//mars.go
+package main
+import(
+    "fmt"
+)
+func main(){
+    var s
+    s = 56000000/28
+    //注意：此案例中距离与时间相除为整数，如果存在不能整除的情况需要上取整，正数的上取整（a+b-1）/b，负数的上取整a/b
+    fmt.Printf("Malacandra's speed is %v km/h", s)
+}
+```
