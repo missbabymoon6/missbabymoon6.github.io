@@ -111,6 +111,7 @@ func main(){
 }
 ```
 R:批改：
+
 ```go
 //go语言导入go标准库中的包的方法：
 import "fmt"
@@ -128,3 +129,4 @@ go run hello.go
 //先编辑、再运行
 go build hello.go
 ./hello
+```
