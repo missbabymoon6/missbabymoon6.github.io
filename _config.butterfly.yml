@@ -42,11 +42,11 @@ social:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: https://imagebed-1304466568.cos.ap-chengdu.myqcloud.com/freecompress-p630594892.jpg
+favicon: /imgs/avatar_hellokitty.jpg
 
 # Avatar (頭像)
 avatar:
-  img: https://imagebed-1304466568.cos.ap-chengdu.myqcloud.com/freecompress-p630594892.jpg
+  img: /imgs/avatar_hellokitty.jpg
   effect: false
 
 # Disable all banner image
