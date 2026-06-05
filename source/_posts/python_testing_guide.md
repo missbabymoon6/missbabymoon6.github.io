@@ -362,4 +362,245 @@ python --version && pip show pytest
 
 ---
 
+## 实践学习记录（2026-06-05）
+
+### 环境搭建与第一个测试
+
+#### 1. Python环境检查
+
+```bash
+python --version
+# 输出：Python 3.13.5 (或 Windows 上为 3.8.10)
+```
+
+#### 2. 安装 pytest（Windows PowerShell 中遇到路径问题）
+
+**问题**：`pip` 命令指向不存在的 Python 路径
+```bash
+pip install pytest
+# 错误：Fatal error in launcher: Unable to create process using ...
+```
+
+**解决**：使用模块方式运行
+```bash
+python -m pip install pytest
+```
+
+**来源**：Python 官方文档推荐的包安装方式
+
+**原理**：
+- `pip.exe` 内部硬编码了 Python 解释器路径
+- `python -m pip` 用当前找到的 Python 运行 pip，绕过路径问题
+
+#### 3. 创建虚拟环境（重要！）
+
+**为什么需要虚拟环境**：
+- 隔离项目依赖，避免冲突
+- 全局环境有公司自定义插件（如 pytest_atf），干扰学习
+- 可以安装纯净的测试环境
+
+**创建虚拟环境**：
+```bash
+python -m venv venv
+```
+
+**激活虚拟环境（Git Bash）**：
+```bash
+source venv/Scripts/activate
+# 激活后终端显示 (venv) 前缀
+```
+
+**在虚拟环境中安装 pytest**：
+```bash
+python -m pip install pytest
+```
+
+#### 4. 第一个测试文件
+
+**创建文件**（Git Bash heredoc 语法）：
+```bash
+cat > test_demo.py << EOF
+def test_addition():
+    result = 1 + 1
+    assert result == 2
+
+def test_string_length():
+    text = "hello"
+    assert len(text) == 5
+EOF
+```
+
+**来源**：Unix/Linux 标准的 heredoc 语法
+
+**解释**：
+- `cat > 文件 << EOF`：将后续内容写入文件，直到遇到 EOF 为止
+- 比 PowerShell 的多行命令简洁很多
+
+**运行测试**：
+```bash
+pytest test_demo.py -v
+```
+
+**输出**：
+```
+test_demo.py::test_addition PASSED
+test_demo.py::test_string_length PASSED
+2 passed in 0.01s
+```
+
+#### 5. 理解测试失败
+
+**故意让测试失败**：
+```bash
+sed -i 's/assert result == 7/assert result == 8/' test_demo.py
+```
+
+**失败输出**：
+```
+FAILED test_demo.py::test_subtraction - assert 7 == 9
+
+E       assert 7 == 9
+```
+
+**关键信息**：
+- `FAILED`：测试失败
+- `assert 7 == 9`：期望值 9，实际值 7
+- pytest 会清晰显示预期 vs 实际
+
+### 模块化测试实践
+
+#### 1. 创建业务代码文件
+
+**calculator.py**：
+```python
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+```
+
+#### 2. 创建测试文件
+
+**test_calculator.py**：
+```python
+from calculator import add, subtract
+
+def test_add_positive():
+    assert add(3, 5) == 8
+
+def test_add_negative():
+    assert add(-3, 5) == 2
+
+def test_subtract_positive():
+    assert subtract(10, 3) == 7
+
+def test_subtract_negative():
+    assert subtract(3, 10) == -7
+```
+
+**运行所有测试**：
+```bash
+pytest -v  # 自动查找所有 test_ 开头的文件
+```
+
+### 参数化测试
+
+#### 概念解释
+
+**装饰器 `@pytest.mark.parametrize`**：
+- **比喻**：给快递贴标签，告诉 pytest 如何处理这个函数
+- **作用**：用多组数据运行同一个测试函数
+
+#### 代码示例
+
+```python
+import pytest
+from calculator import add, subtract
+
+@pytest.mark.parametrize("a, b, expected", [
+    (3, 5, 8),      # 第1组：a=3, b=5, 期望=8
+    (-3, 5, 2),     # 第2组：a=-3, b=5, 期望=2
+    (0, 10, 10),    # 第3组：a=0, b=10, 期望=10
+])
+def test_add(a, b, expected):
+    assert add(a, b) == expected
+```
+
+#### 输出示例
+
+```
+test_add[3-5-8] PASSED
+test_add[-3-5-2] PASSED
+test_add[0-10-10] PASSED
+```
+
+每组参数都变成一个独立的测试。
+
+### 核心概念总结（小白版）
+
+| 概念 | 作用 | 比喻 |
+|------|------|------|
+| **函数** `def xxx():` | 封装一段可重复使用的代码 | 一个小工具，按名字就能用 |
+| **断言** `assert x == y` | 验证结果是否符合预期 | 质检员检查产品是否合格 |
+| **模块** `from x import y` | 从其他文件导入代码 | 从工具箱拿工具出来用 |
+| **装饰器** `@xxx` | 给函数贴标签，改变它的行为 | 给快递贴"加急"标签 |
+| **列表** `[1, 2, 3]` | 存放多个数据的容器 | 购物清单，可以放很多项 |
+| **元组** `(1, 2, 3)` | 固定的一组数据 | 打包好的礼盒，不能改 |
+| **参数化** `@pytest.mark.parametrize` | 用多组数据运行同一个测试 | 一套模板，多次套用 |
+
+### 常用命令汇总
+
+| 命令 | 作用 |
+|------|------|
+| `python --version` | 检查 Python 版本 |
+| `python -m venv venv` | 创建虚拟环境 |
+| `source venv/Scripts/activate` | 激活虚拟环境（Git Bash） |
+| `python -m pip install pytest` | 安装 pytest |
+| `pytest test_demo.py -v` | 运行指定测试文件 |
+| `pytest -v` | 运行所有测试 |
+| `cat filename` | 查看文件内容 |
+| `sed -i 's/旧/新/' file` | 替换文件中的内容 |
+
+### 常见问题与解决
+
+| 问题 | 解决方法 |
+|------|---------|
+| pip 命令找不到 Python | 用 `python -m pip` 代替 `pip` |
+| pytest 需要 --script-log-path | 用虚拟环境，安装纯净 pytest |
+| 测试文件不被识别 | 文件名和函数名都要以 `test_` 开头 |
+| assert 语法错误 | 用 `==` 比较，不是 `=` 赋值 |
+
+---
+
+## 学习进度
+
+✅ 搭建 Python 环境
+✅ 安装 pytest
+✅ 创建虚拟环境
+✅ 写第一个测试
+✅ 理解测试结构
+✅ 测试失败时的输出
+✅ 从模块导入函数
+✅ 参数化测试
+✅ 理解核心编程概念
+
+---
+
+## 下一步建议
+
+1. **继续练习参数化测试**
+   - 给 `test_demo.py` 也加上参数化
+   - 或者自己写新的测试函数
+
+2. **学习测试异常情况**
+   - 比如测试除以零会报错
+   - 学习 `pytest.raises()` 语法
+
+3. **测试 Web 接口**
+   - 学习如何测试 HTTP 请求
+   - 安装 `requests` 库
+
+---
+
 *本文档整理自2026年6月的学习对话*
